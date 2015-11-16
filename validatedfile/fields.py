@@ -1,7 +1,12 @@
+from __future__ import unicode_literals
+
 from django.db import models
 from django import forms
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext as _
+from django.utils.encoding import force_text
+
+from chamber.utils import remove_diacritics
 
 import magic
 
@@ -43,6 +48,12 @@ class ValidatedFileField(models.FileField):
                 )
 
         return data
+
+    def get_filename(self, filename):
+        """
+        removes UTF chars from filename
+        """
+        return super(ValidatedFileField, self).get_filename(remove_diacritics(force_text(filename)))
 
 
 class FileQuota(object):

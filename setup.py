@@ -9,7 +9,7 @@ setup(
     description = "This Django app adds a new field type, ValidatedFileField, that add the capability of checking the document size and types the user may send.",
     long_description = "",
     keywords = 'django, filefield, validation',
-    author = u'Andrés Moya Velázquez',
+    author = u'Andrés Moya Velázquez, Jiří Zamazal',
     author_email = 'andres.moya@kaleidos.net',
     url = 'https://github.com/kaleidos/django-validated-file',
     license = 'BSD',
@@ -21,6 +21,7 @@ setup(
     install_requires=[
         'distribute',
         'python-magic >= 0.4.2',
+        'django-chamber>=0.1.7',
     ],
     setup_requires = [
         'versiontools >= 1.8',
@@ -34,5 +35,8 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Topic :: Internet :: WWW/HTTP',
-    ]
+    ],
+    dependency_links=[
+        'https://github.com/matllubos/django-chamber/tarball/0.1.7#egg=django-chamber-0.1.7'
+    ],
 )
